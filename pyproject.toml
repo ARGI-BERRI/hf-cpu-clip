@@ -1,0 +1,39 @@
+[project]
+name = "hf-cpu-clip"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28.1",
+    "pillow>=11.3.0",
+    "torch>=2.8.0",
+    "torchvision>=0.23.0",
+    "transformers>=4.55.3",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["COM812", "D", "PLR", "T"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+    "INP001",  # __init__.py
+    "S101",    # assert used in tests
+    "S105",    # password is hardcoded
+    "S106",    # password is hardcoded
+    "PLR2004", # magic number is used
+]
+
+"scripts/**" = ["INP001", "D", "G"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
